@@ -64,14 +64,19 @@ function showPay(){
   box.innerHTML=(lang=='ar'?'حوّل 500 جنيه على '+p[1]+(v=='instapay'?' على العنوان:':' على الرقم:'):'Transfer EGP 500 via '+p[2]+' to:')+'<br><b dir="ltr" class="num">'+p[3]+'</b>'+(v=='instapay'?'<br><a class="btn btn-gold small" href="'+INSTAPAY_LINK+'" target="_blank" rel="noopener">'+(lang=='ar'?'افتح رابط إنستاباي':'Open InstaPay link')+'</a><div class="hint">'+(lang=='ar'?'اكتب المبلغ 500 جنيه عند التحويل':'Enter the amount EGP 500 when you transfer')+'</div>':'');
 }
 bm.onchange=showPay;
-document.getElementById('bform').onsubmit=function(e){
+var $=function(i){return document.getElementById(i)};
+$('bstep1').onsubmit=function(e){e.preventDefault();$('bstep1').hidden=true;$('bstep2').hidden=false;$('ind1').className='';$('ind2').className='on';$('bbox').scrollIntoView({block:'start'})};
+$('bback').onclick=function(){$('bstep2').hidden=true;$('bstep1').hidden=false;$('ind2').className='';$('ind1').className='on'};
+$('bstep2').onsubmit=function(e){
   e.preventDefault();
-  var g=function(i){return document.getElementById(i).value.trim()};
   var p=PAY.filter(function(x){return x[0]==bm.value})[0];if(!p)return;
-  var ar=lang=='ar',ty=g('bt')=='phone'?(ar?'بالتليفون':'By phone'):(ar?'في المكتب':'At the office');
-  var t=ar?['السلام عليكم، أريد حجز استشارة قانونية.','الاسم: '+g('bn'),'الموبايل: '+g('bp'),'نوع الاستشارة: '+ty,'الموضوع: '+g('bs'),'الموعد المناسب: '+g('bd'),'طريقة الدفع: '+p[1]+' (500 جنيه)','مرفق إيصال التحويل.']
-   :['Hello, I would like to book a legal consultation.','Name: '+g('bn'),'Mobile: '+g('bp'),'Type: '+ty,'Topic: '+g('bs'),'Preferred time: '+g('bd'),'Payment: '+p[2]+' (EGP 500)','Transfer receipt attached.'];
-  window.open('https://wa.me/'+OFFICE_WA+'?text='+encodeURIComponent(t.join('\n')),'_blank');
+  var ar=lang=='ar',g=function(i){return $(i).value.trim()};
+  var sub=g('bt')=='company'?(ar?'تأسيس شركة':'Company formation'):(ar?'قضية':'A legal case');
+  var t=ar?['السلام عليكم، أريد حجز استشارة قانونية أونلاين.','الاسم: '+g('bn'),'التليفون: '+g('bp'),'الواتساب: '+g('bw'),'الموضوع: '+sub,'الوصف: '+g('bs'),'طريقة الدفع: '+p[1]+' (500 جنيه)','سأرفق صورة التحويل في المحادثة.']
+   :['Hello, I would like to book a legal consultation online.','Name: '+g('bn'),'Phone: '+g('bp'),'WhatsApp: '+g('bw'),'Subject: '+sub,'Description: '+g('bs'),'Payment: '+p[2]+' (EGP 500)','I will attach the transfer screenshot in this chat.'];
+  var url='https://wa.me/'+OFFICE_WA+'?text='+encodeURIComponent(t.join('\n'));
+  $('bwa').href=url;$('bstep2').hidden=true;$('bdone').hidden=false;$('ind2').className='on';
+  window.open(url,'_blank');
 };
 var saved='ar';try{saved=localStorage.getItem('lang')||'ar'}catch(e){}
 apply(saved);

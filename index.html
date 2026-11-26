@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#82404F">
+<meta name="theme-color" content="#6A2E3E">
 <title>الحَكيم للاستشارات القانونية والمحاماة | Al-Hakim Legal Consultancy &amp; Law</title>
 <meta name="description" content="مكتب الحكيم للاستشارات القانونية والمحاماة في الدقي، الجيزة: تأسيس الشركات، القضايا الجنائية والمدنية والأسرة والتجارية والعمالية والعقارية. Law office in Dokki, Giza: company formation and litigation.">
 <link rel="icon" href="logo.png">
@@ -98,24 +98,36 @@
 </section>
 
 <section class="sec" id="book">
-  <h2 data-ar="احجز استشارة" data-en="Book a consultation"></h2>
-  <p class="lead" data-ar="استشارة قانونية بسعر 500 جنيه، بالتليفون أو في المكتب. الحجز يتأكد بعد التحقق من التحويل." data-en="A legal consultation for EGP 500, by phone or at the office. Your booking is confirmed once the transfer is verified."></p>
-  <form class="ci bookform" id="bform">
-    <input id="bn" required data-ph-ar="الاسم" data-ph-en="Full name">
-    <input id="bp" type="tel" inputmode="tel" dir="ltr" required data-ph-ar="رقم الموبايل" data-ph-en="Mobile number">
-    <select id="bt" required>
-      <option value="" data-ar="نوع الاستشارة" data-en="Consultation type"></option>
-      <option value="phone" data-ar="بالتليفون" data-en="By phone"></option>
-      <option value="office" data-ar="في المكتب" data-en="At the office"></option>
-    </select>
-    <textarea id="bs" rows="3" required data-ph-ar="موضوع الاستشارة باختصار" data-ph-en="Briefly, what is the consultation about?"></textarea>
-    <input id="bd" required data-ph-ar="اليوم والوقت المناسبين لك" data-ph-en="Your preferred day and time">
-    <select id="bm" required></select>
-    <div class="payinfo" id="payinfo" hidden></div>
-    <div class="price"><span data-ar="سعر الاستشارة" data-en="Consultation fee"></span>: <b data-ar="500 جنيه" data-en="EGP 500"></b></div>
-    <button class="btn btn-gold" type="submit" data-ar="تابع على واتساب" data-en="Continue on WhatsApp"></button>
-    <p class="note" data-ar="بعد التحويل ابعت صورة الإيصال على واتساب في الرسالة الجاهزة. الحجز يتأكد بعد التحقق من التحويل ونتواصل معك لتحديد الموعد." data-en="After transferring, attach the receipt in the prepared WhatsApp message. Your booking is confirmed once the transfer is verified, and we will contact you to settle the time."></p>
-  </form>
+  <h2 data-ar="احجز استشارتك أونلاين" data-en="Book your consultation online"></h2>
+  <p class="lead" data-ar="استشارة قانونية بسعر 500 جنيه. هنراجع طلبك ونتصل بك." data-en="A legal consultation for EGP 500. We will review your request and call you."></p>
+  <div class="ci bookform" id="bbox">
+    <div class="steps-ind"><span class="on" id="ind1" data-ar="١. بياناتك" data-en="1. Your details"></span><span id="ind2" data-ar="٢. الدفع" data-en="2. Payment"></span></div>
+    <form id="bstep1">
+      <input id="bn" required data-ph-ar="الاسم" data-ph-en="Full name">
+      <input id="bp" type="tel" inputmode="tel" dir="ltr" required data-ph-ar="رقم التليفون" data-ph-en="Phone number">
+      <input id="bw" type="tel" inputmode="tel" dir="ltr" required data-ph-ar="رقم الواتساب" data-ph-en="WhatsApp number">
+      <select id="bt" required>
+        <option value="" data-ar="موضوع الاستشارة" data-en="Consultation subject"></option>
+        <option value="company" data-ar="تأسيس شركة" data-en="Company formation"></option>
+        <option value="case" data-ar="قضية" data-en="A legal case"></option>
+      </select>
+      <textarea id="bs" rows="3" required data-ph-ar="اكتب وصفاً مختصراً" data-ph-en="Short description"></textarea>
+      <button class="btn btn-gold" type="submit" data-ar="التالي" data-en="Next"></button>
+    </form>
+    <form id="bstep2" hidden>
+      <select id="bm" required></select>
+      <div class="payinfo" id="payinfo" hidden></div>
+      <div class="price"><span data-ar="سعر الاستشارة" data-en="Consultation fee"></span>: <b data-ar="500 جنيه" data-en="EGP 500"></b></div>
+      <label class="filebox"><span data-ar="صورة التحويل (اختياري هنا، هترفقها في واتساب)" data-en="Transfer screenshot (optional here, you attach it in WhatsApp)"></span><input id="bf" type="file" accept="image/*"></label>
+      <button class="btn btn-gold" type="submit" data-ar="إرسال" data-en="Send"></button>
+      <button class="btn btn-ghost back" type="button" id="bback" data-ar="رجوع" data-en="Back"></button>
+    </form>
+    <div id="bdone" hidden>
+      <h3 data-ar="خطوة أخيرة" data-en="One last step"></h3>
+      <p data-ar="فتحنا لك واتساب المكتب ببيانات الحجز جاهزة. اضغط إرسال هناك، وبعدها أرفق صورة التحويل في نفس المحادثة. هنراجع طلبك ونتصل بك." data-en="We opened the office WhatsApp with your details ready. Press send there, then attach the transfer screenshot in the same chat (the paperclip button). We will review your request and call you."></p>
+      <a class="btn btn-gold" id="bwa" target="_blank" rel="noopener" data-ar="افتح واتساب مرة أخرى" data-en="Open WhatsApp again"></a>
+    </div>
+  </div>
 </section>
 
 <section class="sec alt" id="contact">
