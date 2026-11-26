@@ -95,3 +95,6 @@ html.en .steps li:before{content:counter(s);font-family:Georgia,serif}
 .lawyer-text p{margin-bottom:12px;font-size:18px;color:#3d2a30}
 .lawyer-text .btn{margin-top:8px}
 @media(max-width:720px){.lawyer{grid-template-columns:1fr;gap:24px}.lawyer-photo{max-width:320px;margin:auto}.lawyer-text{text-align:center}.lawyer-text h2{text-align:center}.lawyer-text h2:after{margin:8px auto 0}.lawyer-text .tag{margin:0 auto 10px}}
+
+.bookform{max-width:560px;margin:26px auto 0;text-align:start}.bookform .payinfo{background:#faf5ec;border:1px dashed var(--gold);border-radius:10px;padding:12px;margin:8px 0;text-align:center;color:#3b1a24}.bookform .payinfo .num{font-size:24px;color:var(--bg)}.bookform .price{margin:10px 0;text-align:center;font-size:18px}.bookform .note{font-size:14px;opacity:.8;text-align:center;margin-top:10px}.bookform [hidden]{display:none}.sec>.lead{color:#5a3a42;text-align:center;max-width:640px;margin:8px auto 0}
+.payinfo .small{margin-top:8px}.payinfo .hint{font-size:14px;margin-top:6px;opacity:.8}.payinfo .num{user-select:all}

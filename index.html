@@ -18,6 +18,7 @@
     <a href="#lawyer" data-ar="المحامي" data-en="The lawyer"></a>
     <a href="#about" data-ar="من نحن" data-en="About"></a>
     <a href="#steps" data-ar="خطوات العمل" data-en="How we work"></a>
+    <a href="#book" data-ar="احجز استشارة" data-en="Book"></a>
     <a href="#faq" data-ar="أسئلة شائعة" data-en="FAQ"></a>
     <a href="#contact" data-ar="تواصل معنا" data-en="Contact"></a>
   </nav>
@@ -65,7 +66,7 @@
       <h2 data-ar="٨ سنوات في قانون الشركات" data-en="8 years in company law"></h2>
       <p data-ar="أمضى ٨ سنوات في العمل بقانون الشركات، يساعد خلالها المؤسسين وأصحاب الأعمال على بدء شركاتهم على أساس قانوني سليم." data-en="He has spent 8 years working in company law, helping founders and business owners start their companies on a sound legal footing."></p>
       <p data-ar="ويقدّم اليوم، من خلال مكتب الحكيم، الاستشارات القانونية والتمثيل أمام المحاكم للأفراد والشركات." data-en="Today, through Al-Hakim, he provides legal advice and court representation to individuals and companies."></p>
-      <a class="btn btn-gold" href="https://wa.me/201101254549" target="_blank" rel="noopener" data-ar="احجز استشارة" data-en="Book a consultation"></a>
+      <a class="btn btn-gold" href="#book" data-ar="احجز استشارة" data-en="Book a consultation"></a>
     </div>
   </div>
 </section>
@@ -94,6 +95,27 @@
 <section class="sec" id="faq">
   <h2 data-ar="أسئلة شائعة" data-en="Frequently asked questions"></h2>
   <div class="faq" id="faqList"></div>
+</section>
+
+<section class="sec" id="book">
+  <h2 data-ar="احجز استشارة" data-en="Book a consultation"></h2>
+  <p class="lead" data-ar="استشارة قانونية بسعر 500 جنيه، بالتليفون أو في المكتب. الحجز يتأكد بعد التحقق من التحويل." data-en="A legal consultation for EGP 500, by phone or at the office. Your booking is confirmed once the transfer is verified."></p>
+  <form class="ci bookform" id="bform">
+    <input id="bn" required data-ph-ar="الاسم" data-ph-en="Full name">
+    <input id="bp" type="tel" inputmode="tel" dir="ltr" required data-ph-ar="رقم الموبايل" data-ph-en="Mobile number">
+    <select id="bt" required>
+      <option value="" data-ar="نوع الاستشارة" data-en="Consultation type"></option>
+      <option value="phone" data-ar="بالتليفون" data-en="By phone"></option>
+      <option value="office" data-ar="في المكتب" data-en="At the office"></option>
+    </select>
+    <textarea id="bs" rows="3" required data-ph-ar="موضوع الاستشارة باختصار" data-ph-en="Briefly, what is the consultation about?"></textarea>
+    <input id="bd" required data-ph-ar="اليوم والوقت المناسبين لك" data-ph-en="Your preferred day and time">
+    <select id="bm" required></select>
+    <div class="payinfo" id="payinfo" hidden></div>
+    <div class="price"><span data-ar="سعر الاستشارة" data-en="Consultation fee"></span>: <b data-ar="500 جنيه" data-en="EGP 500"></b></div>
+    <button class="btn btn-gold" type="submit" data-ar="تابع على واتساب" data-en="Continue on WhatsApp"></button>
+    <p class="note" data-ar="بعد التحويل ابعت صورة الإيصال على واتساب في الرسالة الجاهزة. الحجز يتأكد بعد التحقق من التحويل ونتواصل معك لتحديد الموعد." data-en="After transferring, attach the receipt in the prepared WhatsApp message. Your booking is confirmed once the transfer is verified, and we will contact you to settle the time."></p>
+  </form>
 </section>
 
 <section class="sec alt" id="contact">

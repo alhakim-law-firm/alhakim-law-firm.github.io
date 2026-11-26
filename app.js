@@ -37,7 +37,7 @@ function apply(l){
   document.querySelectorAll('[data-alt-ar]').forEach(function(e){e.alt=e.getAttribute('data-alt-'+l)});
   document.querySelectorAll('[data-ph-ar]').forEach(function(e){e.placeholder=e.getAttribute('data-ph-'+l)});
   document.getElementById('lang').textContent=l=='ar'?'EN':'عربي';
-  try{localStorage.setItem('lang',l)}catch(e){}
+  if(typeof showPay=='function')showPay();try{localStorage.setItem('lang',l)}catch(e){}
 }
 document.getElementById('lang').onclick=function(){apply(lang=='ar'?'en':'ar')};
 document.getElementById('form').onsubmit=function(e){
@@ -46,6 +46,32 @@ document.getElementById('form').onsubmit=function(e){
   var sv=s.length>1?(lang=='ar'?s[0]:s[1]):'';
   var t=(lang=='ar'?'السلام عليكم، أنا ':'Hello, I am ')+n+(sv?(lang=='ar'?'. الخدمة المطلوبة: ':'. Service: ')+sv:'')+(m?'. '+m:'');
   window.open('https://wa.me/201101254549?text='+encodeURIComponent(t),'_blank');
+};
+
+/* ---- Consultation booking config ---- */
+var OFFICE_WA='201101254549';
+var WALLET_NUMBER='01101254549';
+var INSTAPAY_ADDRESS='hadyhkeem14@instapay';
+var INSTAPAY_LINK='https://ipn.eg/S/hadyhkeem14/instapay/5R7WwZ';
+var PAY=[['wallet','محفظة اتصالات كاش','Etisalat Cash wallet',WALLET_NUMBER]];
+if(INSTAPAY_ADDRESS&&INSTAPAY_LINK)PAY.push(['instapay','إنستاباي','InstaPay',INSTAPAY_ADDRESS]);
+var bm=document.getElementById('bm');
+bm.innerHTML='<option value="" data-ar="طريقة الدفع" data-en="Payment method"></option>'+PAY.map(function(p){return '<option value="'+p[0]+'" data-ar="'+p[1]+'" data-en="'+p[2]+'"></option>'}).join('');
+function showPay(){
+  var v=bm.value,box=document.getElementById('payinfo'),p=PAY.filter(function(x){return x[0]==v})[0];
+  if(!p){box.hidden=true;return}
+  box.hidden=false;
+  box.innerHTML=(lang=='ar'?'حوّل 500 جنيه على '+p[1]+(v=='instapay'?' على العنوان:':' على الرقم:'):'Transfer EGP 500 via '+p[2]+' to:')+'<br><b dir="ltr" class="num">'+p[3]+'</b>'+(v=='instapay'?'<br><a class="btn btn-gold small" href="'+INSTAPAY_LINK+'" target="_blank" rel="noopener">'+(lang=='ar'?'افتح رابط إنستاباي':'Open InstaPay link')+'</a><div class="hint">'+(lang=='ar'?'اكتب المبلغ 500 جنيه عند التحويل':'Enter the amount EGP 500 when you transfer')+'</div>':'');
+}
+bm.onchange=showPay;
+document.getElementById('bform').onsubmit=function(e){
+  e.preventDefault();
+  var g=function(i){return document.getElementById(i).value.trim()};
+  var p=PAY.filter(function(x){return x[0]==bm.value})[0];if(!p)return;
+  var ar=lang=='ar',ty=g('bt')=='phone'?(ar?'بالتليفون':'By phone'):(ar?'في المكتب':'At the office');
+  var t=ar?['السلام عليكم، أريد حجز استشارة قانونية.','الاسم: '+g('bn'),'الموبايل: '+g('bp'),'نوع الاستشارة: '+ty,'الموضوع: '+g('bs'),'الموعد المناسب: '+g('bd'),'طريقة الدفع: '+p[1]+' (500 جنيه)','مرفق إيصال التحويل.']
+   :['Hello, I would like to book a legal consultation.','Name: '+g('bn'),'Mobile: '+g('bp'),'Type: '+ty,'Topic: '+g('bs'),'Preferred time: '+g('bd'),'Payment: '+p[2]+' (EGP 500)','Transfer receipt attached.'];
+  window.open('https://wa.me/'+OFFICE_WA+'?text='+encodeURIComponent(t.join('\n')),'_blank');
 };
 var saved='ar';try{saved=localStorage.getItem('lang')||'ar'}catch(e){}
 apply(saved);
