@@ -100,3 +100,6 @@ html.en .steps li:before{content:counter(s);font-family:Georgia,serif}
 .payinfo .small{margin-top:8px}.payinfo .hint{font-size:14px;margin-top:6px;opacity:.8}.payinfo .num{user-select:all}
 .steps-ind{display:flex;gap:8px;margin-bottom:12px}.steps-ind span{flex:1;padding:6px;border-radius:999px;background:#f1e8d6;font-size:14px;text-align:center;color:#55222F}.steps-ind span.on{background:var(--bg);color:#fff}.filebox{display:block;font-size:14px;margin:8px 0;text-align:start}.filebox input{margin-top:4px}.bookform .back{width:100%;margin-top:8px;color:var(--bg);border-color:var(--bg)}#bdone{text-align:center}#bdone .btn{margin-top:10px}
 .bookform .back{background:transparent;border:2px solid var(--bg);cursor:pointer}
+footer .btn{margin-top:14px}
+footer{padding-bottom:40px}
+footer small{display:block}footer .btn{display:inline-block}
